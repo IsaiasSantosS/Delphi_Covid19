@@ -60,14 +60,6 @@ object dmDados: TdmDados
       FieldName = 'deaths'
       Size = 255
     end
-    object cdsDadosApisuspects: TWideStringField
-      FieldName = 'suspects'
-      Size = 255
-    end
-    object cdsDadosApirefuses: TWideStringField
-      FieldName = 'refuses'
-      Size = 255
-    end
     object cdsDadosApidatetime: TWideStringField
       FieldName = 'datetime'
       Size = 255
@@ -86,27 +78,5 @@ object dmDados: TdmDados
     RootElement = 'data'
     Left = 40
     Top = 88
-  end
-  object RESTClient2: TRESTClient
-    Accept = 'application/json, text/plain; q=0.9, text/html;q=0.8,'
-    AcceptCharset = 'utf-8, *;q=0.8'
-    BaseURL = 'https://api.covid19.finspect.me/'
-    Params = <>
-    Left = 464
-    Top = 32
-  end
-  object RESTRequest2: TRESTRequest
-    Client = RESTClient2
-    Params = <>
-    Resource = 'brcovid19/region'
-    Response = RESTResponse2
-    SynchronizedEvents = False
-    Left = 464
-    Top = 88
-  end
-  object RESTResponse2: TRESTResponse
-    ContentType = 'application/json'
-    Left = 464
-    Top = 152
   end
 end

@@ -16,6 +16,7 @@ object frmPrincipal: TfrmPrincipal
   Position = poScreenCenter
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 13
   object pnlTItulo: TPanel
@@ -32,7 +33,6 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = [fsBold]
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 647
   end
   object pnlCabecalho: TPanel
     Left = 0
@@ -41,7 +41,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 56
     Align = alTop
     TabOrder = 1
-    ExplicitWidth = 647
     object lblConfirmado: TLabel
       Left = 95
       Top = 29
@@ -138,9 +137,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 41
     Align = alBottom
     TabOrder = 3
-    ExplicitLeft = 446
-    ExplicitTop = 232
-    ExplicitWidth = 185
     object btnAtualizar: TButton
       Left = 564
       Top = 8
@@ -177,7 +173,6 @@ object frmPrincipal: TfrmPrincipal
     Height = 279
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 292
     object lblTituloEstados: TLabel
       Left = 107
       Top = 10
@@ -219,7 +214,7 @@ object frmPrincipal: TfrmPrincipal
           FieldName = 'cases'
           Title.Alignment = taCenter
           Title.Caption = 'Casos'
-          Width = 40
+          Width = 60
           Visible = True
         end
         item
@@ -228,25 +223,7 @@ object frmPrincipal: TfrmPrincipal
           FieldName = 'deaths'
           Title.Alignment = taCenter
           Title.Caption = 'Mortos'
-          Width = 45
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'suspects'
-          Title.Alignment = taCenter
-          Title.Caption = 'Suspeitos'
-          Width = 55
-          Visible = True
-        end
-        item
-          Alignment = taRightJustify
-          Expanded = False
-          FieldName = 'refuses'
-          Title.Alignment = taCenter
-          Title.Caption = 'Recuperados'
-          Width = 70
+          Width = 60
           Visible = True
         end>
     end
@@ -258,204 +235,9 @@ object frmPrincipal: TfrmPrincipal
     Height = 279
     Align = alRight
     TabOrder = 4
-    ExplicitLeft = 370
-    object lblTituloRegioes: TLabel
-      Left = 111
-      Top = 10
-      Width = 65
-      Height = 22
-      Caption = 'Regi'#245'es'
-      Font.Charset = ANSI_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Times New Roman'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object pnlCentroOeste: TPanel
-      Left = 1
-      Top = 230
-      Width = 286
-      Height = 48
-      Align = alBottom
-      TabOrder = 0
-      ExplicitTop = 229
-      object lblCentroOestePorcentagem: TLabel
-        Left = 32
-        Top = 17
-        Width = 63
-        Height = 13
-        Caption = 'Porcentagem'
-      end
-      object lblTituloCentroOeste: TLabel
-        Left = 111
-        Top = 5
-        Width = 71
-        Height = 15
-        Caption = 'Centro Oeste'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblCentroOesteQuantidade: TLabel
-        Left = 192
-        Top = 17
-        Width = 56
-        Height = 13
-        Caption = 'Quantidade'
-      end
-    end
-    object pnlSul: TPanel
-      Left = 1
-      Top = 182
-      Width = 286
-      Height = 48
-      Align = alBottom
-      TabOrder = 1
-      ExplicitLeft = 6
-      ExplicitTop = 184
-      object lblSulPorcentagem: TLabel
-        Left = 32
-        Top = 18
-        Width = 63
-        Height = 13
-        Caption = 'Porcentagem'
-      end
-      object lblTituloSul: TLabel
-        Left = 136
-        Top = 5
-        Width = 19
-        Height = 15
-        Caption = 'Sul'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblSulQuantidade: TLabel
-        Left = 192
-        Top = 18
-        Width = 56
-        Height = 13
-        Caption = 'Quantidade'
-      end
-    end
-    object pnlNorte: TPanel
-      Left = 1
-      Top = 134
-      Width = 286
-      Height = 48
-      Align = alBottom
-      TabOrder = 2
-      ExplicitLeft = -2
-      object lblNortePorcentagem: TLabel
-        Left = 32
-        Top = 18
-        Width = 63
-        Height = 13
-        Caption = 'Porcentagem'
-      end
-      object lblTituloNorte: TLabel
-        Left = 129
-        Top = 5
-        Width = 30
-        Height = 15
-        Caption = 'Norte'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblNorteQuantidade: TLabel
-        Left = 192
-        Top = 18
-        Width = 56
-        Height = 13
-        Caption = 'Quantidade'
-      end
-    end
-    object pnlNordeste: TPanel
-      Left = 1
-      Top = 86
-      Width = 286
-      Height = 48
-      Align = alBottom
-      TabOrder = 3
-      ExplicitTop = 82
-      object lblTituloNordeste: TLabel
-        Left = 121
-        Top = 5
-        Width = 47
-        Height = 15
-        Caption = 'Nordeste'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblNordestePorcentagem: TLabel
-        Left = 32
-        Top = 18
-        Width = 63
-        Height = 13
-        Caption = 'Porcentagem'
-      end
-      object lblNordesteQuantidade: TLabel
-        Left = 192
-        Top = 18
-        Width = 56
-        Height = 13
-        Caption = 'Quantidade'
-      end
-    end
-    object pnlSudeste: TPanel
-      Left = 1
-      Top = 38
-      Width = 286
-      Height = 48
-      Align = alBottom
-      TabOrder = 4
-      ExplicitTop = 33
-      object lblTituloSudeste: TLabel
-        Left = 123
-        Top = 5
-        Width = 42
-        Height = 15
-        Caption = 'Sudeste'
-        Font.Charset = ANSI_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = 'Times New Roman'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
-      object lblSudestePorcentagem: TLabel
-        Left = 32
-        Top = 17
-        Width = 63
-        Height = 13
-        Caption = 'Porcentagem'
-      end
-      object lblSudesteQuantidade: TLabel
-        Left = 192
-        Top = 17
-        Width = 56
-        Height = 13
-        Caption = 'Quantidade'
-      end
-    end
   end
   object tmPausarConsulta: TTimer
-    Interval = 300000
+    Interval = 180000
     OnTimer = tmPausarConsultaTimer
     Left = 568
     Top = 8

@@ -38,7 +38,6 @@ type
     // Procedimento para consultar a api
     procedure BRTotal(uri: string);
     procedure BuscarEstados(uri: string);
-    procedure BuscarRegioes;
   end;
 
 implementation
@@ -58,7 +57,7 @@ begin
   except
     on E: Exception do
     begin
-      MessageDlg('Erro no dados de retorno da api', mtWarning, mbOKCancel, 0);
+      MessageDlg('Erro no dados da api covid19-brazil-api.now.sh', mtWarning, mbOKCancel, 0);
       Abort;
     end
   end;
@@ -69,47 +68,6 @@ begin
   fDMDados.RestAdapter.Active := False;
   fDMDados.cdsDadosApi.Active := False;
   Consultar(uri);
-end;
-
-procedure TConsultarAPI.BuscarRegioes;
-var
-  StringRead: TStringReader;
-  JSONTextRead: TJsonTextReader;
-  JSON: TJSONValue;
-  i: integer;
-begin
-  i := 0;
-  try
-    fDMDados.RESTRequest2.Execute;
-    JSON := fDMDados.RESTResponse2.JSONValue;
-    StringRead := TStringReader.Create(JSON.ToString);
-    JSONTextRead := TJsonTextReader.Create(StringRead);
-    while JSONTextRead.Read do
-    begin
-      if JSONTextRead.Value.ToString = 'name' then
-      begin
-        JSONTextRead.Read;
-        DadosRegiao[i].nome := JSONTextRead.Value.AsString;
-      end;
-      if JSONTextRead.Value.ToString = 'percent' then
-      begin
-        JSONTextRead.Read;
-        DadosRegiao[i].porcentagem := JSONTextRead.Value.AsString;
-      end;
-      if JSONTextRead.Value.ToString = 'qtd' then
-      begin
-        JSONTextRead.Read;
-        DadosRegiao[i].quantidade := JSONTextRead.Value.AsInteger;
-        Inc(i);
-      end;
-    end;
-  except
-    on E: Exception do
-    begin
-      MessageDlg('Erro ao consultar API', mtWarning, mbOKCancel, 0);
-      Abort;
-    end
-  end;
 end;
 
 function TConsultarAPI.Consultar(uri: string): TJSONValue;

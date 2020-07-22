@@ -30,27 +30,6 @@ type
     pnlRodape: TPanel;
     prbAtualizar: TProgressBar;
     pnlRegiao: TPanel;
-    lblTituloRegioes: TLabel;
-    pnlCentroOeste: TPanel;
-    pnlSul: TPanel;
-    pnlNorte: TPanel;
-    pnlNordeste: TPanel;
-    pnlSudeste: TPanel;
-    lblTituloSudeste: TLabel;
-    lblSudestePorcentagem: TLabel;
-    lblSudesteQuantidade: TLabel;
-    lblTituloNordeste: TLabel;
-    lblNordestePorcentagem: TLabel;
-    lblNordesteQuantidade: TLabel;
-    lblNortePorcentagem: TLabel;
-    lblTituloNorte: TLabel;
-    lblNorteQuantidade: TLabel;
-    lblSulPorcentagem: TLabel;
-    lblTituloSul: TLabel;
-    lblSulQuantidade: TLabel;
-    lblCentroOestePorcentagem: TLabel;
-    lblTituloCentroOeste: TLabel;
-    lblCentroOesteQuantidade: TLabel;
     tmPausarConsulta: TTimer;
     btnInfor: TButton;
     procedure btnAtualizarClick(Sender: TObject);
@@ -58,11 +37,11 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure tmPausarConsultaTimer(Sender: TObject);
     procedure btnInforClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
     fConsultarAPI: TConsultarAPI;
     procedure ConfiguraDadosPais;
-    procedure ConfigurarRegioes;
   public
     { Public declarations }
   end;
@@ -89,12 +68,6 @@ begin
   fConsultarAPI.BuscarEstados('api/report/v1');
   prbAtualizar.StepIt;
 
-  fConsultarAPI.BuscarRegioes;
-  prbAtualizar.StepIt;
-
-  ConfigurarRegioes;
-  prbAtualizar.StepIt;
-
   prbAtualizar.Visible := false;
   btnAtualizar.Enabled := false;
 end;
@@ -102,9 +75,8 @@ end;
 procedure TfrmPrincipal.btnInforClick(Sender: TObject);
 begin
  MessageDlg(
- 'Usando o Delphi Community Edition para consumir via REST as api´s '+
+ 'Usando o Delphi Community Edition para consumir via REST a api '+
  'https://covid19-brazil-api-docs.now.sh/ ' +
- 'e https://doc.covid.finspect.me/ '+
  'com informações sobre o covid-19 ', mtInformation, [mbOK], 0);
 end;
 
@@ -116,35 +88,6 @@ begin
   lblAtivos.Caption := fCOnsultarAPI.Ativos;
 end;
 
-procedure TfrmPrincipal.ConfigurarRegioes;
-begin
-  //index 0
-  lblTituloSudeste.Caption := fConsultarAPI.DadosRegiao[0].nome;
-  lblSudestePorcentagem.Caption := fConsultarAPI.DadosRegiao[0].porcentagem;
-  lblSudesteQuantidade.Caption := IntToStr(fConsultarAPI.DadosRegiao[0].quantidade);
-
-  //index 1
-  lblTituloNordeste.Caption := fConsultarAPI.DadosRegiao[1].nome;
-  lblNordestePorcentagem.Caption := fConsultarAPI.DadosRegiao[1].porcentagem;
-  lblNordesteQuantidade.Caption := IntToStr(fConsultarAPI.DadosRegiao[1].quantidade);
-
-  //index 2
-  lblTituloNorte.Caption := fConsultarAPI.DadosRegiao[2].nome;
-  lblNortePorcentagem.Caption := fConsultarAPI.DadosRegiao[2].porcentagem;
-  lblNorteQuantidade.Caption := IntToStr(fConsultarAPI.DadosRegiao[2].quantidade);
-
-  //index 3
-  lblTituloSul.Caption := fConsultarAPI.DadosRegiao[3].nome;
-  lblSulPorcentagem.Caption := fConsultarAPI.DadosRegiao[3].porcentagem;
-  lblSulQuantidade.Caption := IntToStr(fConsultarAPI.DadosRegiao[3].quantidade);
-
-  //index 4
-  lblTituloCentroOeste.Caption := fConsultarAPI.DadosRegiao[4].nome;
-  lblCentroOestePorcentagem.Caption := fConsultarAPI.DadosRegiao[4].porcentagem;
-  lblCentroOesteQuantidade.Caption := IntToStr(fConsultarAPI.DadosRegiao[4].quantidade);
-
-end;
-
 procedure TfrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   fConsultarAPI.Free;
@@ -153,6 +96,11 @@ end;
 procedure TfrmPrincipal.FormCreate(Sender: TObject);
 begin
   fConsultarAPI := TConsultarAPI.Create;
+end;
+
+procedure TfrmPrincipal.FormShow(Sender: TObject);
+begin
+ btnAtualizarClick(Sender);
 end;
 
 procedure TfrmPrincipal.tmPausarConsultaTimer(Sender: TObject);

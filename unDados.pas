@@ -21,12 +21,7 @@ type
     cdsDadosApistate: TWideStringField;
     cdsDadosApicases: TWideStringField;
     cdsDadosApideaths: TWideStringField;
-    cdsDadosApisuspects: TWideStringField;
-    cdsDadosApirefuses: TWideStringField;
     cdsDadosApidatetime: TWideStringField;
-    RESTClient2: TRESTClient;
-    RESTRequest2: TRESTRequest;
-    RESTResponse2: TRESTResponse;
   private
     { Private declarations }
   public
