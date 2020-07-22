@@ -29,9 +29,11 @@ type
     lblTituloEstados: TLabel;
     pnlRodape: TPanel;
     prbAtualizar: TProgressBar;
-    pnlRegiao: TPanel;
+    pnlPaises: TPanel;
     tmPausarConsulta: TTimer;
     btnInfor: TButton;
+    lblTitulosPaises: TLabel;
+    DBGrid1: TDBGrid;
     procedure btnAtualizarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -66,6 +68,9 @@ begin
   prbAtualizar.StepIt;
 
   fConsultarAPI.BuscarEstados('api/report/v1');
+  prbAtualizar.StepIt;
+
+  fConsultarAPI.BuscarPaises('api/report/v1/countries');
   prbAtualizar.StepIt;
 
   prbAtualizar.Visible := false;

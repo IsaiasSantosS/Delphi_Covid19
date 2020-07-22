@@ -22,6 +22,16 @@ type
     cdsDadosApicases: TWideStringField;
     cdsDadosApideaths: TWideStringField;
     cdsDadosApidatetime: TWideStringField;
+    dsDadosPais: TDataSource;
+    cdsDadosPais: TClientDataSet;
+    RestAdapterPaises: TRESTResponseDataSetAdapter;
+    cdsDadosPaiscountry: TWideStringField;
+    cdsDadosPaiscases: TWideStringField;
+    cdsDadosPaisconfirmed: TWideStringField;
+    cdsDadosPaisdeaths: TWideStringField;
+    cdsDadosPaisrecovered: TWideStringField;
+    cdsDadosPaisupdated_at: TWideStringField;
+    RESTResponse2: TRESTResponse;
   private
     { Private declarations }
   public

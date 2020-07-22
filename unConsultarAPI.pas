@@ -38,6 +38,7 @@ type
     // Procedimento para consultar a api
     procedure BRTotal(uri: string);
     procedure BuscarEstados(uri: string);
+    procedure BuscarPaises(uri: string);
   end;
 
 implementation
@@ -67,12 +68,22 @@ procedure TConsultarAPI.BuscarEstados(uri: string);
 begin
   fDMDados.RestAdapter.Active := False;
   fDMDados.cdsDadosApi.Active := False;
+  fDMDados.RESTRequest1.Response := fDMDados.RESTResponse1;
+  Consultar(uri);
+end;
+
+procedure TConsultarAPI.BuscarPaises(uri: string);
+begin
+  fDMDados.RestAdapterPaises.Active := False;
+  fDMDados.cdsDadosPais.Active := False;
+  fDMDados.RESTRequest1.Response := fDMDados.RESTResponse2;
   Consultar(uri);
 end;
 
 function TConsultarAPI.Consultar(uri: string): TJSONValue;
 begin
   try
+
     fDMDados.RESTRequest1.Resource := uri;
     fDMDados.RESTRequest1.Execute;
   except

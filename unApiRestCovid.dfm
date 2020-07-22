@@ -25,7 +25,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 657
     Height = 41
     Align = alTop
-    Caption = 'Informa'#231#245'es da COVID-19 no Brasil'
+    Caption = 'Informa'#231#245'es da COVID-19 no Brasil e no Mundo'
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
     Font.Height = -21
@@ -169,12 +169,12 @@ object frmPrincipal: TfrmPrincipal
   object pnlEstados: TPanel
     Left = 0
     Top = 97
-    Width = 369
+    Width = 328
     Height = 279
     Align = alLeft
     TabOrder = 2
     object lblTituloEstados: TLabel
-      Left = 107
+      Left = 87
       Top = 10
       Width = 155
       Height = 22
@@ -187,9 +187,9 @@ object frmPrincipal: TfrmPrincipal
       ParentFont = False
     end
     object dbgDadosEstados: TDBGrid
-      Left = 8
+      Left = 11
       Top = 38
-      Width = 353
+      Width = 306
       Height = 230
       DataSource = dmDados.dsDadosApi
       Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -228,13 +228,87 @@ object frmPrincipal: TfrmPrincipal
         end>
     end
   end
-  object pnlRegiao: TPanel
-    Left = 369
+  object pnlPaises: TPanel
+    Left = 328
     Top = 97
-    Width = 288
+    Width = 329
     Height = 279
     Align = alRight
     TabOrder = 4
+    ExplicitLeft = 329
+    object lblTitulosPaises: TLabel
+      Left = 94
+      Top = 10
+      Width = 142
+      Height = 22
+      Caption = 'Dados dos Pa'#237'ses'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Times New Roman'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object DBGrid1: TDBGrid
+      Left = 11
+      Top = 38
+      Width = 307
+      Height = 230
+      DataSource = dmDados.dsDadosPais
+      Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      ReadOnly = True
+      TabOrder = 0
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Tahoma'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'country'
+          Title.Caption = 'Pa'#237's'
+          Width = 70
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'cases'
+          Title.Alignment = taRightJustify
+          Width = -1
+          Visible = False
+        end
+        item
+          Alignment = taRightJustify
+          Expanded = False
+          FieldName = 'confirmed'
+          Title.Caption = 'Confirmado'
+          Width = 60
+          Visible = True
+        end
+        item
+          Alignment = taRightJustify
+          Expanded = False
+          FieldName = 'deaths'
+          Title.Alignment = taRightJustify
+          Title.Caption = 'Mortos'
+          Width = 70
+          Visible = True
+        end
+        item
+          Alignment = taRightJustify
+          Expanded = False
+          FieldName = 'recovered'
+          Title.Caption = 'Recuperados'
+          Width = 70
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'updated_at'
+          Visible = False
+        end>
+    end
   end
   object tmPausarConsulta: TTimer
     Interval = 180000
